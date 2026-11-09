@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ahmedmusallam.aem</groupId>
+        <artifactId>dialogeditor</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>dialogeditor.ui.apps</artifactId>
+    <packaging>content-package</packaging>
+    <name>AEM Dialog Editor - UI apps</name>
+
+    <build>
+        <sourceDirectory>src/main/content/jcr_root</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>filevault-package-maven-plugin</artifactId>
+                <configuration>
+                    <!-- same group/name as the old Gradle package, so it replaces the installed one -->
+                    <group>com.ahmedmusallam.aem</group>
+                    <name>dialogeditor</name>
+                    <packageType>mixed</packageType>
+                    <embeddeds>
+                        <embedded>
+                            <groupId>com.ahmedmusallam.aem</groupId>
+                            <artifactId>dialogeditor.core</artifactId>
+                            <target>/apps/dialogeditor/install</target>
+                        </embedded>
+                    </embeddeds>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ahmedmusallam.aem</groupId>
+            <artifactId>dialogeditor.core</artifactId>
+        </dependency>
+    </dependencies>
+</project>

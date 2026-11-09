@@ -67,6 +67,16 @@ coral-panelstack[maximized] > coral-panel > coral-panel-content {
   font-weight: bolder;
 }
 
+.request-url {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0 0.5em 0.5em;
+}
+.request-url input {
+  flex: 1;
+}
+
 #dialog-explorer-dialog .coral3-ButtonList-item {
   width: 100% !important;
 }
