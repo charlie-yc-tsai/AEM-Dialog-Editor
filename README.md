@@ -27,14 +27,26 @@ Will search for dialogs under `/apps` to be edited with the Dialog Editor
 ## Build and Deploy from source
 
 ```sh
-./gradlew
+# build only
+mvn clean install
+
+# build and install to http://localhost:4502 (admin/admin)
+mvn clean install -PautoInstallPackage
+
+# another instance
+mvn clean install -PautoInstallPackage -Daem.port=4503 -Dvault.user=admin -Dvault.password=admin
 ```
+
+Modules:
+
+* `core` - OSGi bundle (servlets), embedded in the package under `/apps/dialogeditor/install`
+* `ui.apps` - content package `com.ahmedmusallam.aem:dialogeditor`
 
 ## Environment
 
 Tested on:
 
-* Java 1.8
-* Gradle 5.0
-* Adobe AEM 6.5
+* Java 11 (compiles for Java 8)
+* Maven 3.9
+* Adobe AEM 6.5 (uber-jar 6.5.25)
 
